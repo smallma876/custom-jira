@@ -1,0 +1,32 @@
+{
+  "name": "open-jira",
+  "version": "1.0.0",
+  "description": "open jira",
+  "main": "index.js",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "author": "sergio mallma",
+  "license": "ISC",
+  "dependencies": {
+    "@emotion/react": "^11.10.6",
+    "@emotion/styled": "^11.10.6",
+    "@mui/icons-material": "^5.11.9",
+    "@mui/material": "^5.11.9",
+    "axios": "^1.3.3",
+    "mongoose": "^6.9.2",
+    "next": "^13.1.6",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "uuid": "^9.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "18.14.0",
+    "@types/react": "18.0.28",
+    "@types/uuid": "^9.0.0",
+    "typescript": "4.9.5"
+  }
+}
