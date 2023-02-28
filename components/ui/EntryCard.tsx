@@ -32,7 +32,7 @@ export const EntryCard: FC<Props> = ({ entry }) => {
   };
 
   const onClick = () => {
-    router.push(`/entries/${entry._id}`);
+    router.push(`/entry?id=${entry._id}`);
   };
 
   return (
