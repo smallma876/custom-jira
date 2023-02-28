@@ -1,13 +1,13 @@
-import { Typography } from "@mui/material";
-import Card from "@mui/material/Card";
-import CardHeader from "@mui/material/CardHeader";
-import Grid from "@mui/material/Grid";
 import type { NextPage } from "next";
-import React from "react";
+import { Card, CardContent, CardHeader, Grid } from "@mui/material";
+
 import { Layout } from "../components/layouts";
 import { EntryList, NewEntry } from "../components/ui";
 
 const HomePage: NextPage = () => {
+  // console.log(process.env.NEXT_PUBLIC_CLIENT_KEY);
+  // console.log(process.env.SECRET_KEY);
+
   return (
     <Layout title="Home - OpenJira">
       <Grid container spacing={2}>

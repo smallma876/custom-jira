@@ -1,4 +1,4 @@
-import { EntriesState } from ".";
+import { EntriesState } from "./";
 import { Entry } from "../../interfaces";
 
 type EntriesActionType =
@@ -28,11 +28,13 @@ export const entriesReducer = (
           return entry;
         }),
       };
+
     case "[Entry] Refresh-Data":
       return {
         ...state,
         entries: [...action.payload],
       };
+
     default:
       return state;
   }

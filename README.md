@@ -1,11 +1,27 @@
 # Next.js OpenJira App
+
 Para correr localmente, se necesita la base de datos
+
 ```
 docker-compose up -d
 ```
 
-* El -d, significa __detached__
+- El -d, significa **detached**
 
-MondoDB URL Local:
+## Configurar las variables de entorno
+
+Renombrar el archivo **.env.template** a **.env**
+
+- MongoDB URL Local:
+
 ```
-mondodb://localhost:27017/entriesdb
+MONGO_URL=mongodb://localhost:27017/entriesdb
+```
+
+## Llenar la base de datos con información de pruebas
+
+Llamara:
+
+```
+http://localhost:3000/api/seed
+```
