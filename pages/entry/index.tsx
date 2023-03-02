@@ -63,7 +63,7 @@ export const EntryPage: FC = () => {
       description: inputValue,
     };
 
-    updateEntry(updatedEntry);
+    updateEntry(updatedEntry, true);
   };
 
   return (
