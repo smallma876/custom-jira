@@ -1,14 +1,16 @@
-import { createContext } from 'react';
-import { Entry } from '../../interfaces';
-
+import { createContext } from "react";
+import { Entry } from "../../interfaces";
 
 interface ContextProps {
-    entries: Entry[];
+  entries: Entry[];
 
-    // Methods
-    addNewEntry: (description: string) => void;
-    updateEntry: (entry: Entry) => void;
+  // Methods
+  addNewEntry: (description: string) => void;
+  updateEntry: (
+    entry: Entry,
+    showSnackbar?: boolean,
+    fetching?: (param: boolean) => void
+  ) => void;
 }
 
-
-export const EntriesContext = createContext({} as ContextProps );
+export const EntriesContext = createContext({} as ContextProps);

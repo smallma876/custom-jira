@@ -1,16 +1,18 @@
 import { FC, useReducer, ReactNode } from "react";
-import { UIContext, uiReducer } from "./";
+import { UIActions, UIContext, uiReducer } from "./";
 
 export interface UIState {
   sidemenuOpen: boolean;
   isAddingEntry: boolean;
   isDragging: boolean;
+  isFetching: boolean;
 }
 
 const UI_INITIAL_STATE: UIState = {
   sidemenuOpen: false,
   isAddingEntry: false,
   isDragging: false,
+  isFetching: false,
 };
 
 interface UIProviderProps {
@@ -21,21 +23,25 @@ export const UIProvider: FC<UIProviderProps> = ({ children }) => {
   const [state, dispatch] = useReducer(uiReducer, UI_INITIAL_STATE);
 
   const openSideMenu = () => {
-    dispatch({ type: "UI - Open Sidebar" });
+    dispatch({ type: UIActions.SetOpenSideBar });
   };
 
-  const closeSideMenu = () => dispatch({ type: "UI - Close Sidebar" });
+  const closeSideMenu = () => dispatch({ type: UIActions.SetCloseSideBar });
 
   const setIsAddingEntry = (isAdding: boolean) => {
-    dispatch({ type: "UI - Set isAddingEntry", payload: isAdding });
+    dispatch({ type: UIActions.SetIsAddingEntry, payload: isAdding });
   };
 
   const startDragging = () => {
-    dispatch({ type: "UI - Start Dragging" });
+    dispatch({ type: UIActions.SetIsStartDragging });
   };
 
   const endDragging = () => {
-    dispatch({ type: "UI - End Dragging" });
+    dispatch({ type: UIActions.SetIsEndDragging });
+  };
+
+  const setIsFetching = (isFetching: boolean) => {
+    dispatch({ type: UIActions.SetIsFetching, payload: isFetching });
   };
 
   return (
@@ -48,7 +54,7 @@ export const UIProvider: FC<UIProviderProps> = ({ children }) => {
         openSideMenu,
 
         setIsAddingEntry,
-
+        setIsFetching,
         endDragging,
         startDragging,
       }}
