@@ -2,7 +2,7 @@ import { AppProps } from "next/app";
 import React from "react";
 import { UIProvider } from "../context/ui";
 import { SnackbarProvider } from "notistack";
-import { lightTheme, darkTheme } from "../themes";
+import { darkTheme } from "../themes";
 import { CssBaseline, ThemeProvider } from "@mui/material";
 import { EntriesProvider } from "../context/entries";
 import { useRouter } from "next/router";
