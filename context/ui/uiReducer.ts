@@ -1,42 +1,57 @@
 import { UIState } from "./";
 
+export enum UIActions {
+  SetOpenSideBar = "UI - Open Sidebar",
+  SetCloseSideBar = "UI - Close Sidebar",
+  SetIsAddingEntry = "UI - Set isAddingEntry",
+  SetIsStartDragging = "UI - Start Dragging",
+  SetIsEndDragging = "UI - End Dragging",
+  SetIsFetching = "SET_IS_FETCHING",
+}
+
 type UIActionType =
-  | { type: "UI - Open Sidebar" }
-  | { type: "UI - Close Sidebar" }
-  | { type: "UI - Set isAddingEntry"; payload: boolean }
-  | { type: "UI - Start Dragging" }
-  | { type: "UI - End Dragging" };
+  | { type: UIActions.SetOpenSideBar }
+  | { type: UIActions.SetCloseSideBar }
+  | { type: UIActions.SetIsAddingEntry; payload: boolean }
+  | { type: UIActions.SetIsEndDragging }
+  | { type: UIActions.SetIsStartDragging }
+  | { type: UIActions.SetIsFetching; payload: boolean };
 
 export const uiReducer = (state: UIState, action: UIActionType): UIState => {
   switch (action.type) {
-    case "UI - Open Sidebar":
+    case UIActions.SetOpenSideBar:
       return {
         ...state,
         sidemenuOpen: true,
       };
 
-    case "UI - Close Sidebar":
+    case UIActions.SetCloseSideBar:
       return {
         ...state,
         sidemenuOpen: false,
       };
 
-    case "UI - Set isAddingEntry":
+    case UIActions.SetIsAddingEntry:
       return {
         ...state,
         isAddingEntry: action.payload,
       };
 
-    case "UI - Start Dragging":
+    case UIActions.SetIsStartDragging:
       return {
         ...state,
         isDragging: true,
       };
 
-    case "UI - End Dragging":
+    case UIActions.SetIsEndDragging:
       return {
         ...state,
         isDragging: false,
+      };
+    case UIActions.SetIsFetching:
+      return {
+        ...state,
+        isFetching: action.payload,
       };
 
     default:
