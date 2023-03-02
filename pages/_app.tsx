@@ -6,21 +6,21 @@ import { darkTheme } from "../themes";
 import { CssBaseline, ThemeProvider } from "@mui/material";
 import { EntriesProvider } from "../context/entries";
 import { useRouter } from "next/router";
+import Loader from "../components/ui/loader/Loader";
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
-  const router = useRouter();
-  console.log(router);
-
   return (
     <SnackbarProvider maxSnack={3}>
-      <EntriesProvider>
-        <UIProvider>
+      <UIProvider>
+        <EntriesProvider>
           <ThemeProvider theme={darkTheme}>
             <CssBaseline />
-            <Component {...pageProps} />
+            <Loader>
+              <Component {...pageProps} />
+            </Loader>
           </ThemeProvider>
-        </UIProvider>
-      </EntriesProvider>
+        </EntriesProvider>
+      </UIProvider>
     </SnackbarProvider>
   );
 };
