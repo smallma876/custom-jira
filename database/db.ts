@@ -17,24 +17,26 @@ export const connect = async () => {
     return;
   }
 
-  if (mongoose.connections.length > 0) {
-    mongooConnection.isConnected = mongoose.connections[0].readyState;
+  try {
+    if (mongoose.connections.length > 0) {
+      mongooConnection.isConnected = mongoose.connections[0].readyState;
 
-    if (mongooConnection.isConnected === READY_STATE.Connected) {
-      console.log("Usando conexión anterior");
-      return;
+      if (mongooConnection.isConnected === READY_STATE.Connected) {
+        console.log("Usando conexión anterior");
+        return;
+      }
+
+      await mongoose.disconnect();
     }
-
-    await mongoose.disconnect();
+    await mongoose.connect(process.env.MONGO_URL || "");
+    mongooConnection.isConnected = READY_STATE.Connected;
+    console.log("Conectado a MongoDB:", process.env.MONGO_URL);
+  } catch ({ message }) {
+    console.log(message);
   }
-
-  await mongoose.connect(process.env.MONGO_URL || "");
-  mongooConnection.isConnected = READY_STATE.Connected;
-  console.log("Conectado a MongoDB:", process.env.MONGO_URL);
 };
 
 export const disconnect = async () => {
-
   if (mongooConnection.isConnected === READY_STATE.Disconnected) return;
   await mongoose.disconnect();
   mongooConnection.isConnected = READY_STATE.Disconnected;
